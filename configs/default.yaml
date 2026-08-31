@@ -1,0 +1,190 @@
+paths:
+  data_root: data
+  checkpoint_root: checkpoints
+  artifact_root: artifacts
+  results_root: results
+  paper_root: paper
+  split_manifest: artifacts/splits/pet37_splits.json
+  vf_artifact: artifacts/vf/vf_calibration.json
+  plot_root: results/plots
+  analysis_root: results/analysis
+  run_root: results/runs
+
+runtime:
+  device: auto
+  num_workers: 0
+  deterministic: true
+  seed: 42
+
+data:
+  image_size: 224
+  train_batch_size: 16
+  eval_batch_size: 8
+  train_subset_size:
+  val_subset_size:
+  calibration_size: 100
+  evaluation_size: 1000
+  validation_fraction: 0.1
+  download: true
+  image_mean: [0.485, 0.456, 0.406]
+  image_std: [0.229, 0.224, 0.225]
+
+models:
+  num_classes: 37
+  source:
+    - name: resnet18
+      weight: 0.75
+    - name: vgg16
+      weight: 0.25
+  targets:
+    - mobilenet_v2
+    - densenet121
+  all:
+    - resnet18
+    - vgg16
+    - mobilenet_v2
+    - densenet121
+
+training:
+  epochs: 3
+  learning_rate: 0.0003
+  weight_decay: 0.00001
+  label_smoothing: 0.0
+  freeze_backbone: false
+  early_stopping_patience: 2
+  checkpoint_metric: val_accuracy
+  grad_clip_norm: 1.0
+  mixed_precision: false
+
+attack:
+  epsilon: 0.03137254901960784
+  alpha: 0.006274509803921569
+  steps: 12
+  momentum: 0.9
+  di_prob: 0.7
+  di_scale_min: 0.8
+  di_scale_max: 1.2
+  ti_kernel_size: 3
+  ti_sigma: 3.0
+  eot_neighbor_span: 5
+  eot_samples: 3
+  teacher_eot_samples: 16
+  batch_size: 4
+
+jpeg:
+  static_qualities: [70, 80, 90]
+  unseen_qualities: [72, 78, 84, 88, 92]
+  dynamic_min: 70
+  dynamic_max: 95
+
+vf:
+  quality_min: 70
+  quality_max: 95
+  max_model_order: 8
+  n_poles_init_real: 2
+  n_poles_init_cmplx: 2
+  fit_error_threshold: 0.15
+  ratio_clip: 5.0
+  amplitude_buckets: [0.5, 1.5]
+  calibration_noise_scale: 0.35
+  calibration_samples_per_image: 2
+  fallback_interp: pchip
+  stable_reflect: true
+
+experiments:
+  methods:
+    - baseline_weak
+    - baseline_strong
+    - baseline_diffjpeg
+    - vf_advjpeg
+  seeds: [42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  quality_suites:
+    static_q70:
+      attack_policy:
+        kind: fixed
+        quality: 70
+      eval_policy:
+        kind: fixed
+        quality: 70
+    static_q80:
+      attack_policy:
+        kind: fixed
+        quality: 80
+      eval_policy:
+        kind: fixed
+        quality: 80
+    static_q90:
+      attack_policy:
+        kind: fixed
+        quality: 90
+      eval_policy:
+        kind: fixed
+        quality: 90
+    unseen_q72:
+      attack_policy:
+        kind: fixed
+        quality: 72
+      eval_policy:
+        kind: fixed
+        quality: 72
+    unseen_q78:
+      attack_policy:
+        kind: fixed
+        quality: 78
+      eval_policy:
+        kind: fixed
+        quality: 78
+    unseen_q84:
+      attack_policy:
+        kind: fixed
+        quality: 84
+      eval_policy:
+        kind: fixed
+        quality: 84
+    unseen_q88:
+      attack_policy:
+        kind: fixed
+        quality: 88
+      eval_policy:
+        kind: fixed
+        quality: 88
+    unseen_q92:
+      attack_policy:
+        kind: fixed
+        quality: 92
+      eval_policy:
+        kind: fixed
+        quality: 92
+    dynamic_uniform:
+      attack_policy:
+        kind: random_uniform_int
+        quality_min: 70
+        quality_max: 95
+      eval_policy:
+        kind: random_uniform_int
+        quality_min: 70
+        quality_max: 95
+
+paper:
+  metadata_path: paper/metadata.yaml
+  output_dir: paper/output
+  section_dir: paper/sections
+  template_dir: paper/templates
+  latex_output_dir: paper/output/latex
+  output_format: markdown
+  fail_on_incomplete_matrix: false
+
+analysis:
+  baseline_method: baseline_strong
+  candidate_method: vf_advjpeg
+  appendix_methods:
+    - baseline_diffjpeg
+  main_suites:
+    - static_q70
+    - static_q80
+    - static_q90
+  efficiency_targets:
+    runtime_speedup_min: 3.0
+    estimator_speedup_min: 3.0
+    clean_drop_delta_max: 0.1
+    asr_retention_min: 0.75
