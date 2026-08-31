@@ -1,0 +1,300 @@
+{
+  "averages": {
+    "asr_retention_mean": 0.909201749378902,
+    "estimator_speedup_mean": 2.7851276319929994,
+    "runtime_speedup_mean": 2.1014168620535685
+  },
+  "calibration": {
+    "calibration_size": 32,
+    "quality_max": 90,
+    "quality_min": 70,
+    "student_eot_samples": 3,
+    "teacher_eot_samples": 6
+  },
+  "expected_run_count": 80,
+  "metric_corrections": {
+    "static_q90": {
+      "corrected_value": 0.9855072464,
+      "metric": "asr_retention_mean",
+      "original_value": 0.9159420289855073,
+      "reason": "The review report observed 98.55% Static Q90 ASR retention, replacing the legacy underreported expected value.",
+      "source": "IEEESPL review report"
+    }
+  },
+  "paper_results": {
+    "baseline_viability": {
+      "defended_max_retention_gap": 0.2,
+      "defended_min_baseline_asr_mean": 0.05,
+      "defended_min_baseline_success_total": 20,
+      "device_policy": "cpu_only",
+      "failed_rows": [],
+      "min_seeds": 5,
+      "ok": true,
+      "require_pass": true,
+      "row_count": 33,
+      "source": "baseline_viability_report.json",
+      "standard_max_retention_gap": 0.15,
+      "standard_min_baseline_asr_mean": 0.1,
+      "standard_min_baseline_success_total": 10
+    },
+    "figures": [
+      "plots/fig1_mechanism.pdf",
+      "plots/fig2_cpu_advantage_structure.pdf"
+    ],
+    "manuscript_figures": [
+      "assets/fig1_mechanism.pdf",
+      "assets/fig2_cpu_advantage_structure.pdf"
+    ],
+    "table_i": {
+      "asr_by_suite": {
+        "dynamic_uniform": {
+          "bpda": 0.4042105263157894,
+          "diffjpeg": 0.2694736842105263,
+          "eot": 0.2863157894736842,
+          "vf": 0.2421052631578947
+        },
+        "static_q70": {
+          "bpda": 0.5263157894736842,
+          "diffjpeg": 0.3326315789473684,
+          "eot": 0.36,
+          "vf": 0.3136842105263158
+        },
+        "static_q80": {
+          "bpda": 0.3684210526315789,
+          "diffjpeg": 0.271578947368421,
+          "eot": 0.2673684210526316,
+          "vf": 0.2484210526315789
+        },
+        "static_q90": {
+          "bpda": 0.3789473684210526,
+          "diffjpeg": 0.2294736842105263,
+          "eot": 0.2589473684210526,
+          "vf": 0.25519450801515786
+        }
+      },
+      "methods": {
+        "bpda": "baseline_weak",
+        "diffjpeg": "baseline_diffjpeg",
+        "eot": "baseline_strong",
+        "vf": "vf_advjpeg"
+      },
+      "source": "analysis/efficiency_tradeoff.csv",
+      "suite_order": [
+        "static_q70",
+        "static_q80",
+        "static_q90",
+        "dynamic_uniform"
+      ],
+      "suites": {
+        "dynamic_uniform": {
+          "asr_retention_mean": 0.8436666666666668,
+          "baseline_asr_mean": 0.2863157894736842,
+          "candidate_asr_mean": 0.2421052631578947,
+          "clean_drop_delta_mean": 0.0,
+          "delta_asr_mean": -0.0442105263157894,
+          "estimator_speedup_mean": 3.032538345532509,
+          "runtime_speedup_mean": 2.2554660941823017
+        },
+        "static_q70": {
+          "asr_retention_mean": 0.8733800186741363,
+          "baseline_asr_mean": 0.36,
+          "candidate_asr_mean": 0.3136842105263158,
+          "clean_drop_delta_mean": 0.0,
+          "delta_asr_mean": -0.0463157894736842,
+          "estimator_speedup_mean": 2.9803975597249552,
+          "runtime_speedup_mean": 2.234095705109815
+        },
+        "static_q80": {
+          "asr_retention_mean": 0.9342530657748048,
+          "baseline_asr_mean": 0.2673684210526316,
+          "candidate_asr_mean": 0.2484210526315789,
+          "clean_drop_delta_mean": 0.0,
+          "delta_asr_mean": -0.0189473684210526,
+          "estimator_speedup_mean": 2.413074244715688,
+          "runtime_speedup_mean": 1.862329225402436
+        },
+        "static_q90": {
+          "asr_retention_mean": 0.9855072464,
+          "baseline_asr_mean": 0.2589473684210526,
+          "candidate_asr_mean": 0.25519450801515786,
+          "clean_drop_delta_mean": 0.0,
+          "delta_asr_mean": -0.0037528604058947312,
+          "estimator_speedup_mean": 2.714500377998845,
+          "runtime_speedup_mean": 2.0537764235197224
+        }
+      },
+      "summary_source": "analysis/summary.csv"
+    },
+    "table_ii": {
+      "budget_sweep": {
+        "asr_retention_max": 1.0246884960880904,
+        "asr_retention_min": 0.8394180939833114,
+        "device_policy": "cpu_only",
+        "row_count": 8,
+        "runtime_speedup_max": 3.886805918672226,
+        "runtime_speedup_min": 1.4447360975520642,
+        "source": "cpu_evidence/budget_sweep",
+        "sources": [
+          "cpu_evidence/budget_4_255/analysis/efficiency_tradeoff.csv",
+          "analysis/efficiency_tradeoff.csv",
+          "cpu_evidence/budget_12_255/analysis/efficiency_tradeoff.csv"
+        ]
+      },
+      "chain_count": 12,
+      "chain_suite_source": "pairwise/chain_suite_tradeoff.csv",
+      "cifar10_robustbench": {
+        "asr_retention_max": 1.0666666666666669,
+        "asr_retention_min": 0.9047474747474747,
+        "device_policy": "cpu_only",
+        "row_count": 8,
+        "run_count": 120,
+        "runtime_speedup_max": 2.387498584106747,
+        "runtime_speedup_min": 1.352151319475809,
+        "source": "reviewer_defended/analysis/efficiency_tradeoff.csv"
+      },
+      "cifar10_standard": {
+        "asr_retention_max": 1.0,
+        "asr_retention_min": 0.8833333333333334,
+        "device_policy": "cpu_only",
+        "row_count": 4,
+        "run_count": 60,
+        "runtime_speedup_max": 2.5320727328898,
+        "runtime_speedup_min": 2.4559024920800043,
+        "source": "reviewer_cifar10/analysis/efficiency_tradeoff.csv"
+      },
+      "claim_check_source": "pairwise/claim_check.json",
+      "device_policy": "cpu_only",
+      "imagenet_modern_arch": {
+        "asr_retention_max": 0.9700899684868498,
+        "asr_retention_min": 0.9547813884006476,
+        "cold_start": true,
+        "detail_rows": [
+          {
+            "asr_retention_mean": 0.9547813884006476,
+            "asr_retention_percent": 95.47813884006476,
+            "estimator_speedup_mean": 3.1042334484263185,
+            "n": 5,
+            "runtime_speedup_mean": 2.974729741587229,
+            "target": "DeiT-Small",
+            "target_model": "deit_small_patch16_224.fb_in1k"
+          },
+          {
+            "asr_retention_mean": 0.9673447007285264,
+            "asr_retention_percent": 96.73447007285264,
+            "estimator_speedup_mean": 3.1042334484263185,
+            "n": 5,
+            "runtime_speedup_mean": 3.011682057783872,
+            "target": "DeiT-Tiny",
+            "target_model": "deit_tiny_patch16_224.fb_in1k"
+          },
+          {
+            "asr_retention_mean": 0.9700899684868498,
+            "asr_retention_percent": 97.00899684868499,
+            "estimator_speedup_mean": 3.1042334484263185,
+            "n": 5,
+            "runtime_speedup_mean": 2.9254100597322763,
+            "target": "Swin-T",
+            "target_model": "swin_t"
+          },
+          {
+            "asr_retention_mean": 0.964175918640907,
+            "asr_retention_percent": 96.4175918640907,
+            "estimator_speedup_mean": 3.1042334484263185,
+            "n": 5,
+            "runtime_speedup_mean": 2.905510396238855,
+            "target": "Swin-v2-T",
+            "target_model": "swin_v2_t"
+          }
+        ],
+        "device_policy": "cpu_only",
+        "models": [
+          "vit_b_16",
+          "deit_tiny_patch16_224.fb_in1k",
+          "deit_small_patch16_224.fb_in1k",
+          "swin_t",
+          "swin_v2_t"
+        ],
+        "row_count": 4,
+        "run_count": 40,
+        "runtime_speedup_max": 3.011682057783872,
+        "runtime_speedup_min": 2.905510396238855,
+        "source": "reviewer_imagenet/analysis/efficiency_tradeoff.csv"
+      },
+      "median_asr_retention": 0.9371185991009907,
+      "median_runtime_speedup": 2.606413606704416,
+      "role": "cpu_pairwise_source_data",
+      "source": "pairwise/chain_summary.csv",
+      "successful_chain_count": 12,
+      "suite_row_count": 48,
+      "tested_chain_count": 12
+    },
+    "table_iii": {
+      "calibration_stability": {
+        "row_count": 45,
+        "source": "reviewer_ablation/analysis/reviewer_ablation_summary.csv"
+      },
+      "device_policy": "cpu_only",
+      "quality_boundary": {
+        "asr_retention_mean": 1.022089947089947,
+        "row_count": 1,
+        "runtime_speedup_mean": 2.25798468853975,
+        "source": "cpu_evidence/q50_q70_boundary/analysis/efficiency_tradeoff.csv"
+      },
+      "structure_ablation": {
+        "asr_retention_max": 0.9468967439357244,
+        "asr_retention_min": 0.8273100233100233,
+        "row_count": 8,
+        "runtime_speedup_max": 2.5258416768299443,
+        "runtime_speedup_min": 2.246019304520479,
+        "source": "cpu_evidence/structure_ablation",
+        "sources": [
+          "cpu_evidence/structure_no_vf/analysis/efficiency_tradeoff.csv",
+          "cpu_evidence/structure_frequency_only/analysis/efficiency_tradeoff.csv",
+          "cpu_evidence/structure_bucket_only/analysis/efficiency_tradeoff.csv",
+          "cpu_evidence/structure_full_vf/analysis/efficiency_tradeoff.csv"
+        ]
+      }
+    }
+  },
+  "source_profile": "r18_only",
+  "study_id": "reconfirm",
+  "suite_order": [
+    "static_q70",
+    "static_q80",
+    "static_q90",
+    "dynamic_uniform"
+  ],
+  "suites": {
+    "dynamic_uniform": {
+      "asr_retention_mean": 0.8436666666666668,
+      "clean_drop_delta_mean": 0.0,
+      "estimator_speedup_mean": 3.032538345532509,
+      "runtime_speedup_mean": 2.2554660941823017
+    },
+    "static_q70": {
+      "asr_retention_mean": 0.8733800186741363,
+      "clean_drop_delta_mean": 0.0,
+      "estimator_speedup_mean": 2.9803975597249552,
+      "runtime_speedup_mean": 2.234095705109815
+    },
+    "static_q80": {
+      "asr_retention_mean": 0.9342530657748048,
+      "clean_drop_delta_mean": 0.0,
+      "estimator_speedup_mean": 2.413074244715688,
+      "runtime_speedup_mean": 1.862329225402436
+    },
+    "static_q90": {
+      "asr_retention_mean": 0.9855072464,
+      "clean_drop_delta_mean": 0.0,
+      "estimator_speedup_mean": 2.714500377998845,
+      "runtime_speedup_mean": 2.0537764235197224
+    }
+  },
+  "target_model": "mobilenet_v2",
+  "tolerances": {
+    "asr_retention_mean": 0.08,
+    "clean_drop_delta_mean": 0.01,
+    "estimator_speedup_mean": 0.5,
+    "runtime_speedup_mean": 0.4
+  }
+}
