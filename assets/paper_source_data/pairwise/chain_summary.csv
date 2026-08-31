@@ -1,0 +1,13 @@
+source_model,target_model,pair_label,suite_count,suite_success_count,average_runtime_speedup,average_estimator_speedup,average_asr_retention,q70_is_fastest,dynamic_is_slowest,holm_significant_suite_count,successful_chain
+densenet121,mobilenet_v2,DenseNet121->MobileNetV2,4,4,4.37300517221684,4.980534634245553,1.0463971577671267,False,True,4,True
+densenet121,resnet18,DenseNet121->ResNet18,4,4,3.707256173785475,4.261691900440276,0.8998844360976713,False,False,4,True
+densenet121,vgg16,DenseNet121->VGG16,4,4,2.6945228297369797,3.5041492192913086,0.972307253374271,False,False,4,True
+mobilenet_v2,densenet121,MobileNetV2->DenseNet121,4,4,1.9864194883114086,3.000977836377563,0.8573794261294262,False,True,4,True
+mobilenet_v2,resnet18,MobileNetV2->ResNet18,4,4,2.62301130528219,3.6264957039246175,0.9464285714285714,False,False,4,True
+mobilenet_v2,vgg16,MobileNetV2->VGG16,4,4,1.7009327356179489,3.0582565773997508,0.9162346028154853,True,True,4,True
+resnet18,densenet121,ResNet18->DenseNet121,4,4,2.7569878648395987,4.147622160706315,0.8764172292132818,False,False,4,True
+resnet18,mobilenet_v2,ResNet18->MobileNetV2,4,4,2.221938552976709,3.033938380913031,0.9809524005070533,False,False,4,True
+resnet18,vgg16,ResNet18->VGG16,4,4,1.3965437400222398,2.2964570366878108,0.8813122714009441,False,False,2,True
+vgg16,densenet121,VGG16->DenseNet121,4,4,2.3635393845883437,2.6856263763743837,0.9341880026864547,True,True,2,True
+vgg16,mobilenet_v2,VGG16->MobileNetV2,4,4,3.2955305796140517,3.4912730349804937,1.0414962610202547,False,False,4,True
+vgg16,resnet18,VGG16->ResNet18,4,4,2.5898159081266416,2.808620740432829,0.9400491955155267,False,False,4,True
