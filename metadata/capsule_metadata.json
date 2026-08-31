@@ -1,0 +1,38 @@
+{
+  "components": {
+    "code": [
+      "run.sh",
+      "scripts/run_public_release.py",
+      "src/vf_advjpeg"
+    ],
+    "data": [
+      "data/DATA_UPLOAD_MANIFEST.md",
+      "assets/data_assets_manifest.json",
+      "assets/paper_source_data"
+    ],
+    "environment": [
+      "postInstall",
+      "requirements.txt",
+      "environment/environment_lock.json"
+    ],
+    "metadata": [
+      "metadata/capsule_metadata.json"
+    ]
+  },
+  "description": "Public release for reproducing the rebuilt IEEE SPL manuscript tables and figures for VF-AdvJPEG.",
+  "expected_run_count": 80,
+  "keywords": [
+    "adversarial examples",
+    "JPEG robustness",
+    "transfer attack",
+    "reproducibility"
+  ],
+  "license": "MIT",
+  "runtime": {
+    "downloadable_outputs_generated_by": "run.sh",
+    "input_directory": "/data",
+    "output_directory": "/results",
+    "working_directory": "/code"
+  },
+  "title": "VF-AdvJPEG public release result reproduction"
+}
