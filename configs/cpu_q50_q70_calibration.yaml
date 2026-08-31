@@ -1,0 +1,27 @@
+paths:
+  artifact_root: artifacts/cpu_q50_q70_boundary
+  vf_artifact: artifacts/cpu_q50_q70_boundary/vf/vf_first_pass.json
+  plot_root: results/cpu_q50_q70_boundary/plots
+  analysis_root: results/cpu_q50_q70_boundary/analysis
+  run_root: results/cpu_q50_q70_boundary/runs
+
+vf:
+  quality_min: 50
+  quality_max: 70
+
+experiments:
+  quality_suites:
+    q80_to_q95_boundary:
+      attack_policy:
+        kind: random_uniform_int
+        quality_min: 80
+        quality_max: 95
+      eval_policy:
+        kind: random_uniform_int
+        quality_min: 80
+        quality_max: 95
+
+analysis:
+  study_id: cpu_q50_q70_boundary
+  main_suites:
+    - q80_to_q95_boundary
