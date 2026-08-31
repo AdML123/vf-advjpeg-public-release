@@ -1,0 +1,10 @@
+{
+  "bucket_roughness": 0.05757593339705034,
+  "fit_residual_mean_abs": 0.13298958354428275,
+  "fit_residual_p95_abs": 0.4901745028202487,
+  "frequency_roughness": 0.004474309457913217,
+  "interaction_eta_squared": 0.2818402081047931,
+  "nonzero_cell_count": 3045,
+  "quality_roughness": 0.012734270274772794,
+  "total_observations": 33191424
+}
