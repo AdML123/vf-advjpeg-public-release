@@ -4,6 +4,8 @@ title: "VF-AdvJPEG public release code"
 type: software
 license: "MIT"
 version: "1.0.0"
+doi: "10.5281/zenodo.22183711"
+url: "https://github.com/AdML123/vf-advjpeg-public-release"
 authors:
   - family-names: "Zhang"
     given-names: "Yuefei"

@@ -4,6 +4,7 @@
   "license": "MIT",
   "title": "VF-AdvJPEG CPU JPEG-aware transfer attack code",
   "version": "1.0.0",
+  "doi": "10.5281/zenodo.22183711",
   "description": "Code, tests, environment metadata, input manifests, and disclosure-safe derived fixtures for CPU-only JPEG-aware transfer-attack estimation.",
   "keywords": [
     "JPEG",
@@ -25,6 +26,13 @@
     {
       "name": "Tao, Xiaoying",
       "orcid": "0009-0009-9231-2629"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/AdML123/vf-advjpeg-public-release",
+      "relation": "isIdenticalTo",
+      "resource_type": "software"
     }
   ]
 }

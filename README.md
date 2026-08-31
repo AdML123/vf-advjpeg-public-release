@@ -2,6 +2,10 @@
 
 This directory is the public code release for VF-AdvJPEG.
 
+Repository: https://github.com/AdML123/vf-advjpeg-public-release
+
+Archive DOI: https://doi.org/10.5281/zenodo.22183711
+
 It reproduces the revised IEEE SPL manuscript's CPU-only headline surface. The scientific question is whether the proxy-teacher discrepancy is structured enough to be fitted offline as a reusable calibration artifact, replacing repeated online sampling.
 
 - Table I source data and corrected Static Q90 retention
