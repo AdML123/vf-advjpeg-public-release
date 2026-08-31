@@ -1,0 +1,21 @@
+{
+  "eligible_for_tested_backbones_claim": true,
+  "median_asr_retention": 0.9371185991009907,
+  "median_asr_retention_bootstrap_ci": [
+    0.8905983537493077,
+    0.9766298269406621
+  ],
+  "median_runtime_speedup": 2.606413606704416,
+  "median_runtime_speedup_bootstrap_ci": [
+    2.1041790206440587,
+    3.026259222226825
+  ],
+  "paper_positioning": "tested_backbones_claim",
+  "successful_chain_count": 12,
+  "successful_chain_fraction": 1.0,
+  "successful_chain_fraction_wilson_ci": [
+    0.7575059933447591,
+    1.0
+  ],
+  "tested_chain_count": 12
+}
