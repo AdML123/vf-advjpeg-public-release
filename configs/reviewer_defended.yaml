@@ -1,0 +1,64 @@
+paths:
+  data_root: data/cifar10
+  checkpoint_root: data/checkpoints/robustbench
+  artifact_root: artifacts/reviewer_defended
+  split_manifest: artifacts/reviewer_defended/splits/defended_splits.json
+  vf_artifact: artifacts/reviewer_defended/vf/vf_first_pass.json
+  plot_root: results/reviewer_defended/plots
+  analysis_root: results/reviewer_defended/analysis
+  run_root: results/reviewer_defended/runs
+
+runtime:
+  device: cpu
+
+data:
+  dataset: cifar10
+  image_size: 32
+  eval_batch_size: 16
+  calibration_size: 32
+  evaluation_size: 128
+  download: false
+  image_mean: [0.4914, 0.4822, 0.4465]
+  image_std: [0.2471, 0.2435, 0.2616]
+
+models:
+  num_classes: 10
+  source:
+    - name: robustbench:cifar10:Linf:Wong2020Fast
+      weight: 1.0
+  targets:
+    - robustbench:cifar10:Linf:Rice2020Overfitting
+    - robustbench:cifar10:Linf:Engstrom2019Robustness
+  all:
+    - robustbench:cifar10:Linf:Wong2020Fast
+    - robustbench:cifar10:Linf:Rice2020Overfitting
+    - robustbench:cifar10:Linf:Engstrom2019Robustness
+
+experiments:
+  methods:
+    - baseline_strong
+    - baseline_diffjpeg
+    - vf_advjpeg
+  seeds: [42, 43, 44, 45, 46]
+
+attack:
+  steps: 12
+  eot_samples: 3
+  teacher_eot_samples: 16
+  eot_neighbor_span: 5
+
+vf:
+  quality_min: 70
+  quality_max: 90
+  calibration_samples_per_image: 1
+
+analysis:
+  study_id: reviewer_defended
+  source_profile: cifar10_robustbench
+  baseline_method: baseline_strong
+  candidate_method: vf_advjpeg
+  main_suites:
+    - static_q70
+    - static_q80
+    - static_q90
+    - dynamic_uniform
