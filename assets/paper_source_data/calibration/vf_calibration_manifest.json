@@ -1,0 +1,24 @@
+{
+  "artifact_path": "artifacts/vf/vf_first_pass.json",
+  "artifact_size_bytes": 456456,
+  "calibration_duration_sec": 108.9479668000713,
+  "calibration_size": 32,
+  "device": "cpu",
+  "hardware": {
+    "device": "cpu",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+    "thread_env": {
+      "CUDA_VISIBLE_DEVICES": "",
+      "MKL_NUM_THREADS": "",
+      "OMP_NUM_THREADS": ""
+    }
+  },
+  "max_batches": null,
+  "quality_max": 90,
+  "quality_min": 70,
+  "raw_npz_path": "artifacts/vf/vf_calibration_raw.npz",
+  "raw_npz_size_bytes": 64020,
+  "student_eot_samples": 3,
+  "teacher_eot_samples": 6
+}
