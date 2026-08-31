@@ -1,0 +1,21 @@
+{
+  "average_asr_retention": 0.9837590881340881,
+  "average_estimator_speedup": 3.0795014930187845,
+  "average_runtime_speedup": 1.8506795116585886,
+  "efficiency_wins": 0,
+  "failed_suites": [],
+  "main_suites": [
+    "static_q70",
+    "static_q80",
+    "static_q90",
+    "dynamic_uniform"
+  ],
+  "recovery_required": false,
+  "suite_count": 8,
+  "targets": {
+    "asr_retention_min": 0.75,
+    "clean_drop_delta_max": 0.1,
+    "estimator_speedup_min": 3.0,
+    "runtime_speedup_min": 3.0
+  }
+}
