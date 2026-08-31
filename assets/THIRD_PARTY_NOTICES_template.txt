@@ -1,0 +1,22 @@
+VF-AdvJPEG public release data notices
+
+1. Dataset
+   - Oxford-IIIT Pet dataset
+   - Uploaded under /data/oxford-iiit-pet
+   - Preserve the original dataset attribution and license terms in your submission records.
+
+2. Model checkpoints
+   - resnet18_pet37.pt
+   - mobilenet_v2_pet37.pt
+   - densenet121_pet37.pt
+   - vgg16_pet37.pt
+   - These are pretrained task checkpoints used by the revised manuscript's Pet backbone tables.
+
+3. Perceptual weights
+   - alexnet-owt-7be5be79.pth
+   - Uploaded under /data/perceptual
+   - Required so LPIPS never falls back to runtime downloads.
+
+4. Purpose
+   - This release reproduces the canonical CPU table and paper-facing figures.
+   - Expanded datasets and checkpoints, when uploaded, are used only under the CPU-only protocol.
