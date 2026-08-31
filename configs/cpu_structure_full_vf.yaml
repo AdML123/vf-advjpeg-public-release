@@ -1,0 +1,11 @@
+paths:
+  artifact_root: artifacts/cpu_structure_full_vf
+  plot_root: results/cpu_structure_full_vf/plots
+  analysis_root: results/cpu_structure_full_vf/analysis
+  run_root: results/cpu_structure_full_vf/runs
+
+vf:
+  structure_mode: full
+
+analysis:
+  study_id: cpu_structure_full_vf
