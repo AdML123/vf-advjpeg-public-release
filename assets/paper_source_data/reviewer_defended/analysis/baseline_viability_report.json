@@ -1,0 +1,14 @@
+{
+  "failed_rows": [],
+  "ok": true,
+  "row_count": 8,
+  "thresholds": {
+    "defended_max_retention_gap": 0.2,
+    "defended_min_asr_mean": 0.05,
+    "defended_min_success_total": 20,
+    "min_seeds": 5,
+    "standard_max_retention_gap": 0.15,
+    "standard_min_asr_mean": 0.1,
+    "standard_min_success_total": 10
+  }
+}
