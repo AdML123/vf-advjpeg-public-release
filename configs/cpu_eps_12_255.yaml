@@ -1,0 +1,12 @@
+paths:
+  artifact_root: artifacts/cpu_eps_12_255
+  plot_root: results/cpu_eps_12_255/plots
+  analysis_root: results/cpu_eps_12_255/analysis
+  run_root: results/cpu_eps_12_255/runs
+
+attack:
+  epsilon: 0.047058823529411764
+  alpha: 0.009411764705882352
+
+analysis:
+  study_id: cpu_eps_12_255
