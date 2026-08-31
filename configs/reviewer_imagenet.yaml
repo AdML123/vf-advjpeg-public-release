@@ -1,0 +1,64 @@
+paths:
+  data_root: data/hf_mirror/imagenet1k_val_1k
+  checkpoint_root: data/checkpoints
+  artifact_root: artifacts/reviewer_imagenet
+  split_manifest: artifacts/reviewer_imagenet/splits/imagenet1k_subset_splits.json
+  vf_artifact: artifacts/reviewer_imagenet/vf/vf_first_pass.json
+  plot_root: results/reviewer_imagenet/plots
+  analysis_root: results/reviewer_imagenet/analysis
+  run_root: results/reviewer_imagenet/runs
+
+runtime:
+  device: cpu
+
+data:
+  dataset: imagenet1k_subset
+  image_size: 224
+  eval_batch_size: 4
+  calibration_size: 16
+  evaluation_size: 64
+  download: false
+  image_mean: [0.485, 0.456, 0.406]
+  image_std: [0.229, 0.224, 0.225]
+
+models:
+  num_classes: 1000
+  source:
+    - name: vit_b_16
+      weight: 1.0
+  targets:
+    - deit_tiny_patch16_224.fb_in1k
+    - deit_small_patch16_224.fb_in1k
+    - swin_t
+    - swin_v2_t
+  all:
+    - vit_b_16
+    - deit_tiny_patch16_224.fb_in1k
+    - deit_small_patch16_224.fb_in1k
+    - swin_t
+    - swin_v2_t
+
+experiments:
+  methods:
+    - baseline_strong
+    - vf_advjpeg
+  seeds: [42, 43, 44, 45, 46]
+
+attack:
+  steps: 12
+  eot_samples: 3
+  teacher_eot_samples: 16
+  eot_neighbor_span: 5
+
+vf:
+  quality_min: 70
+  quality_max: 90
+  calibration_samples_per_image: 1
+
+analysis:
+  study_id: reviewer_imagenet
+  source_profile: vit_b_16
+  baseline_method: baseline_strong
+  candidate_method: vf_advjpeg
+  main_suites:
+    - static_q80
