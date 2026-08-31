@@ -1,0 +1,11 @@
+paths:
+  artifact_root: artifacts/cpu_structure_frequency_only
+  plot_root: results/cpu_structure_frequency_only/plots
+  analysis_root: results/cpu_structure_frequency_only/analysis
+  run_root: results/cpu_structure_frequency_only/runs
+
+vf:
+  structure_mode: frequency_only
+
+analysis:
+  study_id: cpu_structure_frequency_only
