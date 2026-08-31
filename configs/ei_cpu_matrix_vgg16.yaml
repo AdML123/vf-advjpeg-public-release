@@ -1,0 +1,110 @@
+paths:
+  checkpoint_root: checkpoints/ei_cpu_matrix
+  artifact_root: artifacts/ei_cpu_matrix/vgg16
+  split_manifest: artifacts/ei_cpu/splits/pet37_ei_cpu_splits.json
+  vf_artifact: artifacts/ei_cpu_matrix/vgg16/vf/vf_first_pass.json
+  plot_root: results/ei_cpu_matrix/vgg16/plots
+  analysis_root: results/ei_cpu_matrix/vgg16/analysis
+  run_root: results/ei_cpu_matrix/vgg16/runs
+  pairwise_bundle_root: results/ei_cpu_pairwise_bundle
+
+runtime:
+  device: cpu
+  seed: 42
+
+data:
+  train_batch_size: 8
+  eval_batch_size: 8
+  calibration_size: 32
+  evaluation_size: 128
+
+models:
+  source:
+    - name: vgg16
+      weight: 1.0
+  targets:
+    - resnet18
+    - mobilenet_v2
+    - densenet121
+  all:
+    - resnet18
+    - vgg16
+    - mobilenet_v2
+    - densenet121
+
+training:
+  epochs: 2
+  freeze_backbone: true
+  early_stopping_patience: 0
+  learning_rate: 0.001
+
+attack:
+  steps: 6
+  eot_samples: 3
+  teacher_eot_samples: 6
+
+vf:
+  quality_min: 70
+  quality_max: 90
+  calibration_samples_per_image: 1
+
+experiments:
+  methods:
+    - baseline_strong
+    - vf_advjpeg
+  seeds: [42, 43, 44]
+  quality_suites:
+    static_q70:
+      attack_policy:
+        kind: fixed
+        quality: 70
+      eval_policy:
+        kind: fixed
+        quality: 70
+    static_q80:
+      attack_policy:
+        kind: fixed
+        quality: 80
+      eval_policy:
+        kind: fixed
+        quality: 80
+    static_q90:
+      attack_policy:
+        kind: fixed
+        quality: 90
+      eval_policy:
+        kind: fixed
+        quality: 90
+    dynamic_uniform:
+      attack_policy:
+        kind: random_uniform_int
+        quality_min: 70
+        quality_max: 95
+      eval_policy:
+        kind: random_uniform_int
+        quality_min: 70
+        quality_max: 95
+
+paper:
+  output_dir: paper/output/ei_cpu_matrix_vgg16
+  section_dir: paper/sections/ei_cpu_matrix_vgg16
+  latex_output_dir: paper/output/ei_cpu_matrix_vgg16_latex
+  output_format: latex
+  fail_on_incomplete_matrix: true
+  pairwise_bundle_dir: results/ei_cpu_pairwise_bundle
+
+analysis:
+  study_id: matrix_vgg16
+  source_profile: vgg16_only
+  baseline_method: baseline_strong
+  candidate_method: vf_advjpeg
+  main_suites:
+    - static_q70
+    - static_q80
+    - static_q90
+    - dynamic_uniform
+  efficiency_targets:
+    runtime_speedup_min: 3.0
+    estimator_speedup_min: 3.0
+    clean_drop_delta_max: 0.1
+    asr_retention_min: 0.75
