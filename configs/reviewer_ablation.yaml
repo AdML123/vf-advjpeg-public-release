@@ -1,0 +1,72 @@
+paths:
+  data_root: data
+  checkpoint_root: checkpoints/ei_cpu
+  artifact_root: artifacts/reviewer_ablation
+  split_manifest: artifacts/ei_cpu/splits/pet37_ei_cpu_splits.json
+  vf_artifact: artifacts/reviewer_ablation/vf/vf_first_pass.json
+  plot_root: results/reviewer_ablation/plots
+  analysis_root: results/reviewer_ablation/analysis
+  run_root: results/reviewer_ablation/runs
+
+runtime:
+  device: cpu
+
+data:
+  dataset: oxford_iiit_pet
+  image_size: 224
+  eval_batch_size: 8
+  calibration_size: 32
+  evaluation_size: 64
+  download: false
+
+models:
+  source:
+    - name: resnet18
+      weight: 1.0
+  targets:
+    - mobilenet_v2
+  all:
+    - resnet18
+    - mobilenet_v2
+
+experiments:
+  methods:
+    - baseline_strong
+    - vf_advjpeg
+  seeds: [42, 43, 44]
+
+attack:
+  steps: 6
+  eot_samples: 3
+  teacher_eot_samples: 6
+  eot_neighbor_span: 5
+
+vf:
+  quality_min: 70
+  quality_max: 90
+  calibration_samples_per_image: 1
+
+reviewer_ablation:
+  calibration_sizes: [16, 32, 64]
+  amplitude_bucket_sets:
+    - []
+    - [0.5]
+    - [0.5, 1.5]
+  neighbor_spans: [3, 5, 7]
+  stability_suites:
+    - static_q70
+    - static_q90
+    - unseen_q72
+    - unseen_q92
+    - dynamic_uniform
+
+analysis:
+  study_id: reviewer_ablation
+  source_profile: r18_only
+  baseline_method: baseline_strong
+  candidate_method: vf_advjpeg
+  main_suites:
+    - static_q70
+    - static_q80
+    - static_q90
+    - dynamic_uniform
