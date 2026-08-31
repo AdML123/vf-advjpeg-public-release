@@ -1,0 +1,53 @@
+%%{init: {
+  "theme": "base",
+  "themeVariables": {
+    "background": "#FFFFFF",
+    "fontFamily": "Arial, Helvetica, sans-serif",
+    "fontSize": "22px",
+    "primaryTextColor": "#222222",
+    "lineColor": "#404040",
+    "clusterBkg": "#FFFFFF",
+    "clusterBorder": "#C7CDD1",
+    "edgeLabelBackground": "#FFFFFF"
+  },
+  "flowchart": {
+    "defaultRenderer": "elk",
+    "nodeSpacing": 20,
+    "rankSpacing": 26,
+    "padding": 8,
+    "htmlLabels": false
+  }
+}}%%
+flowchart TB
+  subgraph shell["same attack shell"]
+    direction TB
+
+    subgraph shared["shared state"]
+      direction LR
+      A["clean image"] --> B["DCT coordinates"] --> G["quality policy"]
+    end
+
+    subgraph calibrate["calibrate"]
+      direction TB
+      C["BPDA proxy"] --> E["response bank"]
+      D["EOT teacher"] --> E
+    end
+
+    subgraph reuse["reuse"]
+      direction TB
+      F["CPU attack steps"] --> H["compressed view"]
+    end
+
+    B --> C
+    E --> F
+    G --> F
+  end
+
+  classDef neutral fill:#F7F7F7,stroke:#4A4A4A,stroke-width:1.4px,color:#222222;
+  class A,B,C,D,E,F,G,H neutral;
+
+  style shell fill:#FFFFFF,stroke:#C7CDD1,stroke-width:1.2px
+  style shared fill:#FFFFFF,stroke:#C7CDD1,stroke-width:1.1px
+  style calibrate fill:#FFFFFF,stroke:#C7CDD1,stroke-width:1.1px
+  style reuse fill:#FFFFFF,stroke:#C7CDD1,stroke-width:1.1px
+  linkStyle default stroke:#404040,stroke-width:1.2px
