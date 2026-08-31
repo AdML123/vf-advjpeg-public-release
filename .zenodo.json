@@ -1,0 +1,30 @@
+{
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "MIT",
+  "title": "VF-AdvJPEG CPU JPEG-aware transfer attack code",
+  "version": "1.0.0",
+  "description": "Code, tests, environment metadata, input manifests, and disclosure-safe derived fixtures for CPU-only JPEG-aware transfer-attack estimation.",
+  "keywords": [
+    "JPEG",
+    "adversarial examples",
+    "transfer attacks",
+    "CPU",
+    "DCT",
+    "vector fitting"
+  ],
+  "creators": [
+    {
+      "name": "Zhang, Yuefei",
+      "orcid": "0009-0007-5653-393X"
+    },
+    {
+      "name": "Xu, Ying",
+      "orcid": "0009-0003-2744-8462"
+    },
+    {
+      "name": "Tao, Xiaoying",
+      "orcid": "0009-0009-9231-2629"
+    }
+  ]
+}
