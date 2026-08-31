@@ -1,0 +1,14 @@
+paths:
+  artifact_root: artifacts/reviewer_imagenet_1000_cpu
+  split_manifest: artifacts/reviewer_imagenet_1000_cpu/splits/imagenet1k_subset_splits.json
+  vf_artifact: artifacts/reviewer_imagenet/vf/vf_first_pass.json
+  plot_root: results/reviewer_imagenet_1000_cpu/plots
+  analysis_root: results/reviewer_imagenet_1000_cpu/analysis
+  run_root: results/reviewer_imagenet_1000_cpu/runs
+
+data:
+  eval_batch_size: 8
+  evaluation_size: 1000
+
+analysis:
+  study_id: reviewer_imagenet_1000
