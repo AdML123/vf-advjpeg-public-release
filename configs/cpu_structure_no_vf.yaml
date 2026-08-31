@@ -1,0 +1,11 @@
+paths:
+  artifact_root: artifacts/cpu_structure_no_vf
+  plot_root: results/cpu_structure_no_vf/plots
+  analysis_root: results/cpu_structure_no_vf/analysis
+  run_root: results/cpu_structure_no_vf/runs
+
+vf:
+  structure_mode: no_vf
+
+analysis:
+  study_id: cpu_structure_no_vf
