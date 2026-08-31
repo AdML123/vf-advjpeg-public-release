@@ -1,0 +1,93 @@
+{
+  "checkpoints": [
+    {
+      "model_name": "resnet18",
+      "relative_path": "checkpoints/resnet18_pet37.pt",
+      "sha256": "cda767b8882b965412bf7f7e6f9cd327986d66d1d09a0219b4a83534de5efeb7",
+      "size_bytes": 44861899
+    },
+    {
+      "model_name": "mobilenet_v2",
+      "relative_path": "checkpoints/mobilenet_v2_pet37.pt",
+      "sha256": "79d0ab0de14e9f4a2ea38a8894810751f1a85121914197a759f9a4580aeb8a56",
+      "size_bytes": 9332363
+    },
+    {
+      "model_name": "densenet121",
+      "relative_path": "checkpoints/densenet121_pet37.pt",
+      "sha256": "4e8a5cb165336f2e4c149c09b7408a3d01a08f2241a449c94e742a4829fecfbf",
+      "size_bytes": 28576563
+    },
+    {
+      "model_name": "vgg16",
+      "relative_path": "checkpoints/vgg16_pet37.pt",
+      "sha256": "7cf829125b5f7d6a78e5d832887be433696aba35e22e849bbae3504153fe4b9d",
+      "size_bytes": 537661019
+    }
+  ],
+  "dataset": {
+    "notes": "Upload the already extracted Oxford-IIIT Pet dataset under /data/oxford-iiit-pet. The revised paper's main tables use this dataset.",
+    "relative_path": "oxford-iiit-pet",
+    "required_subdirectories": [
+      "images",
+      "annotations"
+    ],
+    "runtime_download_allowed": false
+  },
+  "expanded_cpu_only_inputs": {
+    "datasets": [
+      {
+        "name": "cifar10",
+        "relative_path_options": [
+          "cifar10/cifar-10-python.tar.gz",
+          "cifar10/cifar-10-batches-py"
+        ]
+      },
+      {
+        "name": "imagenet1k_val_1k",
+        "relative_path": "hf_mirror/imagenet1k_val_1k"
+      }
+    ],
+    "device_policy": "cpu_only",
+    "model_checkpoints": [
+      "checkpoints/cifar/CIFAR10_ResNet18_epoch_20.pt",
+      "checkpoints/imagenet/deit_tiny_patch16_224.fb_in1k/model.safetensors",
+      "checkpoints/imagenet/deit_small_patch16_224.fb_in1k/model.safetensors",
+      "checkpoints/torch_home/hub/checkpoints/vit_b_16-c867db91.pth",
+      "checkpoints/torch_home/hub/checkpoints/swin_t-704ceda3.pth",
+      "checkpoints/torch_home/hub/checkpoints/swin_v2_t-b137f0e2.pth",
+      "checkpoints/robustbench/cifar10/Linf/Wong2020Fast.pt",
+      "checkpoints/robustbench/cifar10/Linf/Rice2020Overfitting.pt",
+      "checkpoints/robustbench/cifar10/Linf/Engstrom2019Robustness.pt",
+      "checkpoints/robustbench/imagenet/Linf/Salman2020Do_R18.pt",
+      "checkpoints/robustbench/imagenet/Linf/Mo2022When_ViT-B.pt",
+      "checkpoints/robustbench/imagenet/Linf/Mo2022When_Swin-B.pt",
+      "checkpoints/robustbench/imagenet/Linf/Engstrom2019Robustness.pt"
+    ],
+    "notes": "These inputs support CPU-only expanded routes. They must be uploaded under /data before any expanded paper-visible route is enabled.",
+    "runtime_download_allowed": false,
+    "third_party_sources": [
+      "third_party/DeepRobust",
+      "third_party/RobustBench",
+      "third_party/AutoAttack"
+    ]
+  },
+  "paper_source_data": {
+    "included_in_code_assets": true,
+    "notes": "CSV/JSON expected fixtures used for comparison and provenance, not as the primary cold-start source.",
+    "relative_path": "assets/paper_source_data",
+    "role": "expected_fixture",
+    "runtime_download_allowed": false
+  },
+  "perceptual_weights": {
+    "notes": "Required by LPIPS/AlexNet; the capsule must load this file locally and must not download weights at runtime.",
+    "relative_path": "perceptual/alexnet-owt-7be5be79.pth",
+    "runtime_download_allowed": false,
+    "sha256": "7be5be791159472b1fbf3c69796f7cb30dca7ad8466c2df70058c37116cdee02",
+    "size_bytes": 244408911
+  },
+  "recommended_notice_file": {
+    "relative_path": "THIRD_PARTY_NOTICES.txt",
+    "template_path": "assets/THIRD_PARTY_NOTICES_template.txt"
+  }
+}
